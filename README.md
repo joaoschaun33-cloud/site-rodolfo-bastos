@@ -5,6 +5,7 @@ Site institucional + landing page de alta conversão do **Treino Fast RB**, cria
 ## Páginas
 
 - `index.html`: site institucional. Apresentação do Rodolfo, funcional na Praia do Flamengo, trail run nas dunas de Stella Maris, prova social e teaser do Treino Fast RB.
+- `sobre.html`: história do Rodolfo (texto biográfico, slogan "vem pro meu mundo, papa" e vídeos). Feita a partir do texto enviado, para ser ampliada com mais dados.
 - `treino-fast-rb.html`: landing page de vendas do **Treino Fast RB**. Treinos em casa, 20 min/dia, com os 3 níveis (Iniciante, Intermediário, Avançado) e o Método Completo, linkados direto para o checkout na Kiwify.
 - `assets/`: logo (`logo.png`), favicon, apple-touch-icon, a imagem de compartilhamento social (`og-image.png`), a foto real do herói (`hero-portrait.jpg`), o vídeo de boas-vindas do Rodolfo na seção "Sobre" (`welcome.mp4`) e os vídeos reais da quadra (`quadra.mp4`), do funcional (`funcional.mp4`), das dunas (`dunas.mp4`) e do trail run (`trail-run.mp4`), cada um com seu poster (`*-poster.jpg`), usados pelas duas páginas.
 
