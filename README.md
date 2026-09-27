@@ -20,6 +20,10 @@ python -m http.server 8000
 
 e acesse `http://localhost:8000/index.html`. Não há dependências externas além das fontes do Google Fonts.
 
+## Animações
+
+Entradas ao rolar (`data-reveal`, escalonadas por grupo em um pequeno script no fim de cada página), revelação do título e da foto no herói, contador nos números, hover nas capas dos vídeos, FAQ com abertura suave e transição na troca de tema. Tudo em CSS e JavaScript puro. Quem tem "reduzir movimento" ativado no sistema (`prefers-reduced-motion`) vê tudo estático e sem nada escondido.
+
 ## Temas: escuro e claro (prévia para o Rodolfo escolher)
 
 As duas páginas têm duas versões visuais. **Escuro** (padrão): preto com laranja. **Claro**: branco/creme com a paleta do Treino Fast RB (azul-marinho `#071b32`, amarelo `#fdce01`, azul `#0b6bcb`), com a logo em versão `assets/logo-light.png`.

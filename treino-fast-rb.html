@@ -11,6 +11,7 @@
 <meta name="description" content="Método de treino em casa criado pelo personal trainer Rodolfo Bastos: 20 minutos por dia, sem academia, do iniciante ao avançado.">
 <link rel="canonical" href="https://www.rodolfobastos.com.br/treino-fast-rb.html">
 <meta name="theme-color" content="#0a0a0b">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('js');}</script>
 <script>(function(){try{var q=new URLSearchParams(location.search).get('tema'),t=q==='claro'?'light':q==='escuro'?'dark':localStorage.getItem('rb-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);if(q){localStorage.setItem('rb-theme',t);}}}catch(e){}})();</script>
 <meta property="og:url" content="https://www.rodolfobastos.com.br/treino-fast-rb.html">
 <meta property="og:type" content="product">
@@ -249,7 +250,6 @@
   .faq-item summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding-block:22px;font-family:var(--display);font-weight:700;font-size:18px;text-transform:uppercase;}
   .faq-item summary::-webkit-details-marker{display:none;}
   .faq-item summary::after{content:'+';font-family:var(--mono);font-size:20px;color:var(--ember-paper);flex:none;}
-  .faq-item[open] summary::after{content:'–';}
   .faq-item p{padding-bottom:22px;max-width:64ch;color:var(--paper-dim);font-size:15.5px;line-height:1.65;}
 
   /* CTA FINAL */
@@ -263,6 +263,40 @@
   .foot-inner{display:flex;flex-direction:column;gap:14px;font-family:var(--mono);font-size:12px;color:var(--text-dim);line-height:1.7;letter-spacing:.02em;text-align:center;}
   .foot-inner a{color:var(--text-dim);text-decoration:underline;text-underline-offset:3px;}
   .foot-inner a:hover{color:var(--ember);}
+
+  /* ============ MOVIMENTO ============ */
+  :root{--ease:cubic-bezier(.16,1,.3,1);}
+  .js [data-reveal]{
+    opacity:0;translate:0 24px;
+    transition:opacity .9s var(--ease) var(--d,0s),translate .9s var(--ease) var(--d,0s),scale .9s var(--ease) var(--d,0s),transform .4s var(--ease),border-color .3s ease,background .3s ease;
+  }
+  .js [data-reveal="left"]{translate:-26px 0;}
+  .js [data-reveal="scale"]{translate:0 14px;scale:.94;}
+  .js [data-reveal="fade"]{translate:none;}
+  .js [data-reveal].is-in{opacity:1;translate:none;scale:none;}
+  .faq-item summary::after{transition:transform .35s var(--ease);}
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item{interpolate-size:allow-keywords;}
+  .faq-item::details-content{block-size:0;overflow:hidden;transition:block-size .45s var(--ease),content-visibility .45s allow-discrete;}
+  .faq-item[open]::details-content{block-size:auto;}
+  .btn:active{transform:translateY(0) scale(.97);}
+  header.nav{transition:border-color .3s ease,box-shadow .3s ease;}
+  header.nav.scrolled{border-bottom-color:var(--line);box-shadow:0 10px 30px -22px rgba(0,0,0,.6);}
+  html.theme-anim,html.theme-anim *{transition:background-color .45s ease,color .45s ease,border-color .45s ease,fill .45s ease !important;}
+  @media (prefers-reduced-motion:reduce){
+    html.theme-anim,html.theme-anim *{transition:none !important;}
+    .faq-item::details-content{transition:none;}
+  }
+  @keyframes draw{from{stroke-dashoffset:578;}to{stroke-dashoffset:120;}}
+  .js .sw-arc{animation:draw 1.8s var(--ease) .3s both;}
+  .nivel-card,.plano{transition:transform .4s var(--ease),border-color .3s ease;}
+  .nivel-card:hover,.plano:hover{transform:translateY(-4px);border-color:var(--ember);}
+  .step{transition:background .35s ease;}
+  .step:hover{background:var(--ink-2);}
+  .excuse-list li{transition:padding-left .35s var(--ease);}
+  .excuse-list li:hover{padding-left:10px;}
+  @media (prefers-reduced-motion:reduce){.js .sw-arc{animation:none;}}
+
 
   /* SELETOR DE TEMA (prévia) */
   .theme-switch{
@@ -296,18 +330,18 @@
       <div class="hero-stopwatch">
         <svg viewBox="0 0 200 200" fill="none">
           <circle cx="100" cy="100" r="92" stroke="var(--sw-track)" stroke-width="2"/>
-          <circle cx="100" cy="100" r="92" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="578" stroke-dashoffset="120" transform="rotate(-90 100 100)"/>
+          <circle class="sw-arc" cx="100" cy="100" r="92" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="578" stroke-dashoffset="120" transform="rotate(-90 100 100)"/>
           <defs><linearGradient id="g1" x1="0" y1="0" x2="200" y2="200"><stop offset="0" style="stop-color:var(--sw-a)"/><stop offset="1" style="stop-color:var(--sw-b)"/></linearGradient></defs>
         </svg>
-        <div class="num"><strong>20</strong><small>MINUTOS / DIA</small></div>
+        <div class="num"><strong data-count="20" data-delay="500">20</strong><small>MINUTOS / DIA</small></div>
       </div>
-      <h1>Você não precisa de <em>horas</em>. Precisa começar.</h1>
-      <p class="hero-sub">O método de treino em casa criado pelo personal trainer Rodolfo Bastos. Sem academia, sem equipamento complicado, sem desculpa: só 20 minutos guiados, todo dia, do jeito que o seu nível pedir.</p>
-      <div class="hero-cta">
+      <h1 data-reveal style="--d:.15s">Você não precisa de <em>horas</em>. Precisa começar.</h1>
+      <p class="hero-sub" data-reveal style="--d:.3s">O método de treino em casa criado pelo personal trainer Rodolfo Bastos. Sem academia, sem equipamento complicado, sem desculpa: só 20 minutos guiados, todo dia, do jeito que o seu nível pedir.</p>
+      <div class="hero-cta" data-reveal style="--d:.42s">
         <a class="btn btn-ember" href="#planos">Quero começar agora</a>
         <a class="btn btn-ghost" href="#como-funciona">Como funciona ↓</a>
       </div>
-      <div class="hero-trust">
+      <div class="hero-trust" data-reveal style="--d:.54s">
         <span><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.6L22 9.3l-5 4.9 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.3l7.1-.7z"/></svg>Criado por um personal trainer de verdade</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Pagamento seguro processado pela Kiwify</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>+1.500 pessoas acompanhando no Instagram</span>
@@ -501,6 +535,73 @@
   </div>
 </footer>
 
+<script>
+  (function(){
+    var root = document.documentElement;
+    if (!root.classList.contains('js')) { return; }
+
+    // marca os elementos que entram ao rolar e escalona o atraso dentro de cada grupo
+    var groups = [
+      ['.problema h2','up',0,0],['.problema-note','up',0,.1],['.excuse-list li','left',.09,.05],
+      ['.como-head','up',0,0],['.step','up',.1,.05],
+      ['.niveis-head','up',0,0],['.nivel-card','up',.1,.05],
+      ['.prova h2','up',0,0],['.prova-card','up',0,.1],['.prova-stats div','left',.1,.15],
+      ['.incluso h2','up',0,0],['.incluso-item','up',.07,.05],
+      ['.planos-head','up',0,0],['.plano','up',.1,.05],['.garantia','up',0,.05],
+      ['.faq h2','up',0,0],['.faq-item','fade',.07,.05],
+      ['.cta-final h2','scale',0,0],['.cta-final p','up',0,.12]
+    ];
+    groups.forEach(function(g){
+      document.querySelectorAll(g[0]).forEach(function(el, i){
+        if (el.hasAttribute('data-reveal')) { return; }
+        el.setAttribute('data-reveal', g[1]);
+        el.style.setProperty('--d', ((g[3] || 0) + i * g[2]).toFixed(2) + 's');
+      });
+    });
+
+    var fmt = function(el, n){
+      return (el.dataset.prefix || '') + Math.round(n).toLocaleString('pt-BR') + (el.dataset.suffix || '');
+    };
+    var countUp = function(el){
+      var end = parseFloat(el.dataset.count), t0 = null;
+      var step = function(t){
+        if (t0 === null) { t0 = t; }
+        var p = Math.min((t - t0) / 1400, 1);
+        el.textContent = fmt(el, end * (1 - Math.pow(1 - p, 4)));
+        if (p < 1) { requestAnimationFrame(step); }
+      };
+      el.textContent = fmt(el, 0);
+      setTimeout(function(){ requestAnimationFrame(step); }, parseFloat(el.dataset.delay || 0));
+    };
+
+    var reveal = function(el){
+      el.classList.add('is-in');
+      if (el.hasAttribute('data-count')) { countUp(el); }
+    };
+    var targets = document.querySelectorAll('[data-reveal],[data-count]');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+      targets.forEach(function(el){
+        if (el.hasAttribute('data-count')) { el.textContent = fmt(el, 0); }
+        io.observe(el);
+      });
+    } else {
+      targets.forEach(reveal);
+    }
+
+    var nav = document.querySelector('header.nav');
+    if (nav) {
+      var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 8); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  })();
+</script>
+
 <div class="theme-switch" role="group" aria-label="Tema do site">
   <span>Tema</span>
   <button type="button" data-set-theme="dark" aria-pressed="true">Escuro</button>
@@ -520,7 +621,9 @@
     applyTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
     themeButtons.forEach(function(b){
       b.addEventListener('click', function(){
+        document.documentElement.classList.add('theme-anim');
         applyTheme(b.dataset.setTheme);
+        setTimeout(function(){ document.documentElement.classList.remove('theme-anim'); }, 500);
         try { localStorage.setItem('rb-theme', b.dataset.setTheme); } catch(e) {}
       });
     });
