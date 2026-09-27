@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://www.rodolfobastos.com.br/">
 <meta name="theme-color" content="#0a0a0b">
 <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('js');}</script>
-<script>(function(){try{var q=new URLSearchParams(location.search).get('tema'),t=q==='claro'?'light':q==='escuro'?'dark':localStorage.getItem('rb-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);if(q){localStorage.setItem('rb-theme',t);}}}catch(e){}})();</script>
+<script>(function(){try{var q=new URLSearchParams(location.search).get('tema'),t=q==='claro'?'light':q==='escuro'?'dark':localStorage.getItem('rb-theme');if(t!=='dark'){t='light';}document.documentElement.setAttribute('data-theme',t);if(q){localStorage.setItem('rb-theme',t);}}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
 <meta property="og:url" content="https://www.rodolfobastos.com.br/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
