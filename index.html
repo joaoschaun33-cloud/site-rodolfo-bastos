@@ -288,15 +288,29 @@
   /* ============ PROVA SOCIAL (paper) ============ */
   .prova{background:var(--paper);color:var(--paper-ink);padding-block:110px;}
   .prova h2{color:var(--paper-ink);font-size:clamp(32px,4.4vw,50px);text-transform:uppercase;max-width:16ch;}
-  .prova-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:54px;}
-  @media (max-width:900px){.prova-grid{grid-template-columns:1fr;}}
-  .story-card{background:var(--paper-2);border:1px solid rgba(28,23,18,.1);padding:30px;border-radius:2px;display:flex;flex-direction:column;gap:16px;}
-  .story-card .mark{font-family:var(--display);font-size:44px;color:var(--ember-paper);line-height:1;}
-  .story-card p{font-size:16px;line-height:1.6;color:var(--paper-ink);}
-  .story-card footer{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--paper-dim);}
-  .story-card-cta{text-decoration:none;transition:border-color .18s ease,transform .18s ease;}
-  .story-card-cta:hover{border-color:var(--ember-paper);transform:translateY(-3px);}
-  .story-card-cta footer{color:var(--ember-paper);}
+  .rev-loop{position:relative;margin-top:54px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x proximity;}
+  .rev-loop::-webkit-scrollbar{display:none;}
+  .rev-track{display:flex;gap:24px;width:max-content;}
+  .rev-card{background:var(--paper-2);border:1px solid rgba(28,23,18,.1);border-radius:16px;padding:28px;width:360px;flex:none;display:flex;flex-direction:column;gap:16px;box-shadow:0 24px 44px -32px rgba(0,0,0,.4);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s ease;scroll-snap-align:start;}
+  @media (max-width:480px){.rev-card{width:82vw;}}
+  .rev-card:hover{transform:translateY(-5px);box-shadow:0 30px 54px -30px rgba(0,0,0,.5);border-color:var(--ember-paper);}
+  .rev-head{display:flex;align-items:center;gap:12px;}
+  .rev-avatar{width:44px;height:44px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:15px;font-weight:700;color:var(--on-accent);background:linear-gradient(135deg,var(--btn-a),var(--btn-b));object-fit:cover;}
+  .rev-who{display:flex;flex-direction:column;gap:2px;}
+  .rev-name{font-size:14.5px;font-weight:700;}
+  .rev-stars{font-size:12px;letter-spacing:.1em;color:var(--ember-paper);}
+  .rev-card p{font-size:15.5px;line-height:1.6;color:var(--paper-ink);}
+  .rev-card footer{margin-top:auto;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--paper-dim);}
+  .rev-nav{display:flex;justify-content:flex-end;gap:10px;margin-top:22px;}
+  .rev-btn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(28,23,18,.2);background:var(--paper-2);color:var(--paper-ink);font-size:18px;line-height:1;cursor:pointer;transition:transform .3s var(--ease),border-color .3s ease,box-shadow .3s ease;}
+  .rev-btn:hover{border-color:var(--ember-paper);transform:translateY(-2px);box-shadow:0 12px 22px -14px rgba(0,0,0,.45);}
+  .rev-btn:active{transform:scale(.94);}
+  .rev-btn:focus-visible{outline:2px solid var(--ember-paper);outline-offset:3px;}
+  .rev-cta{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:36px;background:var(--paper-2);border:1px solid rgba(28,23,18,.1);border-radius:16px;padding:26px 30px;text-decoration:none;transition:border-color .3s ease,transform .3s ease;}
+  .rev-cta:hover{border-color:var(--ember-paper);transform:translateY(-3px);}
+  .rev-cta p{color:var(--paper-ink);font-size:16px;max-width:48ch;}
+  .rev-cta span.tag{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ember-paper);white-space:nowrap;}
+  @media (prefers-reduced-motion:reduce){.rev-loop{scroll-snap-type:none;}}
 
   /* ============ DIFERENCIAIS ============ */
   .dif{background:var(--ink);padding-block:110px;border-top:1px solid var(--line-soft);}
@@ -363,7 +377,6 @@
   .js .portrait-photo{animation:settle 2s var(--ease) .25s both;}
   .service-card{transition:background .35s ease;}
   .service-card:hover{background:var(--ink-2);}
-  .story-card:hover{border-color:var(--ember-paper);}
   .nav-links a{position:relative;}
   .nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--ember);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);}
   .nav-links a:hover::after{transform:scaleX(1);}
@@ -723,23 +736,58 @@
   <section class="prova" id="comunidade">
     <div class="container">
       <h2>Não é só treino. É gente que se sustenta junto.</h2>
-      <div class="prova-grid">
-        <div class="story-card">
-          <span class="mark">"</span>
-          <p>No funcional da quadra tem gente treinando desde o primeiro dia até quem já virou referência pros novatos. A evolução de cada um vira combustível pro grupo inteiro.</p>
-          <footer>Funcional · Praia do Flamengo</footer>
+      <div class="rev-loop">
+        <div class="rev-track">
+          <div class="rev-card">
+            <div class="rev-head">
+              <img class="rev-avatar" src="assets/rev-patty.jpg" alt="Patty Veiga" width="44" height="44" loading="lazy">
+              <div class="rev-who"><span class="rev-name">Patty Veiga</span><span class="rev-stars" aria-label="5 estrelas">★★★★★</span></div>
+            </div>
+            <p>Ser professor vai muito além de montar treinos. É incentivar, orientar, corrigir, motivar e, muitas vezes, acreditar no aluno até quando ele mesmo duvida da própria capacidade. E você faz isso com muita dedicação e competência.</p>
+            <footer>Avaliação no Google</footer>
+          </div>
+          <div class="rev-card">
+            <div class="rev-head">
+              <img class="rev-avatar" src="assets/rev-gina.jpg" alt="Gina Decanio" width="44" height="44" loading="lazy">
+              <div class="rev-who"><span class="rev-name">Gina Decanio</span><span class="rev-stars" aria-label="5 estrelas">★★★★★</span></div>
+            </div>
+            <p>Excelente profissional! Um personal dedicado, atencioso e muito competente. Sempre preocupado em orientar corretamente, respeitando os limites e buscando o melhor resultado. Além de ser um profissional maravilhoso, transmite confiança e motivação em cada treino. Super recomendo!</p>
+            <footer>Avaliação no Google</footer>
+          </div>
+          <div class="rev-card">
+            <div class="rev-head">
+              <img class="rev-avatar" src="assets/rev-astor.jpg" alt="Astor Bildhauer" width="44" height="44" loading="lazy">
+              <div class="rev-who"><span class="rev-name">Astor Bildhauer</span><span class="rev-stars" aria-label="5 estrelas">★★★★★</span></div>
+            </div>
+            <p>Excelente profissional, com treinos personalizados, focado no bem estar geral dos alunos e não apenas no físico. Treinos ao ar livre em clima familiar e muito agradável! Recomendo!</p>
+            <footer>Avaliação no Google</footer>
+          </div>
+          <div class="rev-card">
+            <div class="rev-head">
+              <img class="rev-avatar" src="assets/rev-italo.jpg" alt="Ítalo Decanio" width="44" height="44" loading="lazy">
+              <div class="rev-who"><span class="rev-name">Ítalo Decanio</span><span class="rev-stars" aria-label="5 estrelas">★★★★★</span></div>
+            </div>
+            <p>Treinamento muito bom, até em grupo é possível ter intensidades individuais. Sempre que puder eu vou voltar, tanto ao treino de sábado quanto trilha de domingo.</p>
+            <footer>Avaliação no Google</footer>
+          </div>
+          <div class="rev-card">
+            <div class="rev-head">
+              <span class="rev-avatar">JM</span>
+              <div class="rev-who"><span class="rev-name">João Martins</span><span class="rev-stars" aria-label="5 estrelas">★★★★★</span></div>
+            </div>
+            <p>Rodolfo é uma cara sensacional, sua presença, atenção e comprometimento é transformador. Tive a sorte de poder conviver e aprender todos os dias com essa pessoa tão especial.</p>
+            <footer>Avaliação no Google</footer>
+          </div>
         </div>
-        <div class="story-card">
-          <span class="mark">"</span>
-          <p>O Treino Fast RB já passou fronteira: tem aluna treinando direto da Itália, no mesmo método de 20 minutos que começou na tela do celular dela.</p>
-          <footer>Treino Fast RB · aluna internacional</footer>
-        </div>
-        <a class="story-card story-card-cta" href="https://instagram.com/rodolfobastos.rb" target="_blank" rel="noopener">
-          <span class="mark">→</span>
-          <p>Quer ver a rotina de perto? Quadra, dunas e bastidores do Treino Fast RB, tudo registrado todo dia no Instagram.</p>
-          <footer>@rodolfobastos.rb · seguir</footer>
-        </a>
       </div>
+      <div class="rev-nav">
+        <button class="rev-btn" type="button" data-rev="-1" aria-label="Avaliações anteriores">←</button>
+        <button class="rev-btn" type="button" data-rev="1" aria-label="Próximas avaliações">→</button>
+      </div>
+      <a class="rev-cta" href="https://instagram.com/rodolfobastos.rb" target="_blank" rel="noopener">
+        <p>Quer ver a rotina de perto? Quadra, dunas e bastidores do Treino Fast RB, tudo registrado todo dia no Instagram.</p>
+        <span class="tag">@rodolfobastos.rb · seguir →</span>
+      </a>
     </div>
   </section>
 
@@ -869,7 +917,7 @@
       ['.welcome-video','up',0,.1],['.quote-block','up',0,.22],['.sobre .container > div:last-child > p','up',0,.32],
       ['.services-head','up',0,0],['.service-card','up',.12,.05],
       ['.tfrb-inner > div:first-child','up',0,0],['.tfrb-cta','up',0,.18],
-      ['.prova h2','up',0,0],['.story-card','up',.12,.05],
+      ['.prova h2','up',0,0],['.rev-loop','up',0,.1],['.rev-cta','up',0,.18],
       ['.dif h2','up',0,0],['.dif-item','left',.1,.05],
       ['.gal-head','up',0,0],['.gal-tile','scale',.1,.05],
       ['.faq h2','up',0,0],['.faq-item','fade',.07,.05],
@@ -923,6 +971,21 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     }
+  })();
+
+  // setas da faixa de avaliações: um passo por clique (sem animação contínua)
+  (function(){
+    var loop = document.querySelector('.rev-loop');
+    var btns = document.querySelectorAll('.rev-btn');
+    if (!loop || !btns.length) { return; }
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        var card = loop.querySelector('.rev-card');
+        var step = card ? card.getBoundingClientRect().width + 24 : 380;
+        loop.scrollBy({ left: step * parseInt(b.dataset.rev, 10), behavior: reduce ? 'auto' : 'smooth' });
+      });
+    });
   })();
 </script>
 
